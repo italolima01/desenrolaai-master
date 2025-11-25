@@ -2,6 +2,7 @@
 
 import { FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-scroll'; // Para rolagem suave
+import NextLink from 'next/link'; // Para links externos ou para outras páginas
 import Image from 'next/image';
 
 export default function Footer() {
