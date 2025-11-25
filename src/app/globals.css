@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Paleta moderna: fundo preto + teal/azul-petróleo como destaque */
+  --color-primary: 20, 184, 166;   /* Teal-500 (azul-petróleo) */
+  --color-secondary: 13, 148, 136; /* Teal-700 (tom mais escuro) */
+  --color-accent: 2, 6, 23;        /* Near Black (slate-950) */
+  --color-neutral: 100, 116, 139;  /* Slate */
+  --color-light: 226, 232, 240;    /* Light Slate */
+}
+
+html, body {
+  scroll-behavior: smooth !important;
+  width: 100vw;
+  background-color:#fff;
+  background-image:linear-gradient(135deg, transparent 0%, #fff 25%, #fff 75%, transparent 100%), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAIklEQVQoU2N89+7dfwYsQEhIiBEkzDgkFGDzAbIY2Cv4AACvrBgJjYNGfwAAAABJRU5ErkJggg==);
+  overflow-x: hidden; /* Ensure no horizontal scroll on the root elements */
+}
+
+/* Tenta aplicar scroll-behavior a qualquer elemento que seja um contêiner de rolagem */
+:root, body, html, [data-scroll-container], [data-simplebar-wrapper], [data-simplebar-content-wrapper], [data-simplebar-placeholder], [data-simplebar-track], [data-simplebar-scrollbar], [data-simplebar] {
+  scroll-behavior: smooth !important;
+}
+
+/* Para elementos com overflow */
+div[style*="overflow-y: scroll"], div[style*="overflow-y: auto"],
+div[style*="overflow: scroll"], div[style*="overflow: auto"] {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  color: #0f172a; /* Texto padrão: near-black (slate-900) — facilita leitura em fundos claros */
+}
+
+@layer base {
+  h2 {
+    @apply text-4xl sm:text-5xl font-bold text-white mb-4;
+  }
+  p {
+    @apply text-lg sm:text-xl text-gray-300;
+  }
+}
+
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 text-white rounded-lg transition-all duration-300;
+    background: linear-gradient(135deg, rgba(var(--color-primary), 1), rgba(var(--color-secondary), 1));
+    border: 1px solid rgba(var(--color-secondary), 0.35);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, rgba(var(--color-secondary), 1), rgba(var(--color-primary), 1));
+    box-shadow: 0 10px 35px rgba(14, 165, 233, 0.25);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-opacity-20 border border-opacity-30;
+    background-color: rgba(15, 23, 42, 0.35); /* slate-900 alpha */
+    border-color: rgba(var(--color-primary), 0.4);
+  }
+
+  .bg-pattern-white {
+    background-color:#fff;
+    background-image:linear-gradient(135deg, transparent 0%, #fff 25%, #fff 75%, transparent 100%), url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAIklEQVQoU2N89+7dfwYsQEhIiBEkzDgkFGDzAbIY2Cv4AACvrBgJjYNGfwAAAABJRU5ErkJggg==);
+  }
+}
+
+.cases-swiper .swiper-button-prev,
+.cases-swiper .swiper-button-next {
+  top: 96px !important; /* Half of h-48 (192px) to align with the image */
+  transform: translateY(-50%) !important;
+  color: #4a5568 !important; /* Adjust color as needed */
+}
+
+.cases-swiper .swiper-button-prev {
+  left: 10px !important;
+}
+
+.cases-swiper .swiper-button-next {
+  right: 10px !important;
+}
