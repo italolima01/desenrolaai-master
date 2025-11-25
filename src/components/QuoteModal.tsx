@@ -63,15 +63,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               });
 
               if (!res.ok) {
-                // Try to parse JSON error body, fallback to text if JSON parsing fails
-                let errBody: ApiErrorResponse | null = null;
-                try {
-                  errBody = (await res.json()) as ApiErrorResponse;
-                } catch (_) {
-                  const txt = await res.text();
-                  errBody = { error: txt };
+                // Tenta extrair uma mensagem de erro do corpo da resposta (JSON ou texto).
+                const contentType = res.headers.get('content-type');
+                let errorBody: ApiErrorResponse | null = null;
+                if (contentType && contentType.includes('application/json')) {
+                  errorBody = (await res.json()) as ApiErrorResponse;
+                } else {
+                  errorBody = { error: await res.text() };
                 }
-                const msg = errBody?.error || errBody?.message || `Status ${res.status} ${res.statusText}`;
+                const msg = errorBody?.error || errorBody?.message || `Erro: ${res.status} ${res.statusText}`;
                 setErrorMessage(String(msg));
                 setStatus('error');
                 setLoading(false);
@@ -85,9 +85,9 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 setStatus('idle');
                 setErrorMessage(null);
               }, 1500);
-            } catch (err) {
-              console.error(err);
-              setErrorMessage((err as Error)?.message || 'Erro desconhecido');
+            } catch (networkError) {
+              console.error(networkError);
+              setErrorMessage((networkError as Error)?.message || 'Falha na comunicação com o servidor.');
               setStatus('error');
             } finally {
               setLoading(false);
