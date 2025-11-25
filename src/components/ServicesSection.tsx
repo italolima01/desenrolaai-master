@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaRobot, FaCogs, FaLightbulb, FaAngleDoubleRight } from 'react-icons/fa';
-import { QuoteModal } from './QuoteModal';
-import { ChatWidget } from './ChatWidget'; // Import for modal control logic
+import { FaRobot, FaCogs, FaLightbulb, FaAngleDoubleRight } from 'react-icons/fa'; // Removed unused imports
+import { QuoteModal } from './QuoteModal'; // Removed unused imports
+// import { ChatWidget } from './ChatWidget'; // Import for modal control logic - commented out as it's unused
 import './animated-button.css';
 
 export default function ServicesSection() {

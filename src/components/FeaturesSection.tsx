@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { FaUserCog, FaMicrochip, FaRocket, FaHeadset } from 'react-icons/fa';
-import Image from 'next/image';
 
 const features = [
   {

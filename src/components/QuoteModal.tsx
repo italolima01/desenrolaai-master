@@ -17,6 +17,11 @@ interface QuoteModalProps {
   onClose: () => void;
 }
 
+interface ApiErrorResponse {
+  error?: string;
+  message?: string;
+}
+
 export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState<FormData>({ name: '', email: '', company: '', message: '' });
@@ -58,10 +63,10 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               });
 
               if (!res.ok) {
-                // Try to parse JSON error body, fallback to text
-                let errBody: any = null;
+                // Try to parse JSON error body, fallback to text if JSON parsing fails
+                let errBody: ApiErrorResponse | null = null;
                 try {
-                  errBody = await res.json();
+                  errBody = (await res.json()) as ApiErrorResponse;
                 } catch (_) {
                   const txt = await res.text();
                   errBody = { error: txt };
