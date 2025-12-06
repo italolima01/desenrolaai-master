@@ -9,8 +9,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-  <footer id="contact" className="relative text-gray-300 py-12 px-4 bg-black">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+  <footer id="contact" className="relative text-gray-300 py-12 px-4">
+      {/* Continuation from CTA gradient */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "radial-gradient(200% 200% at 50% -152%, #000000 72%, #0d1a36 98%)",
+        }}
+      />
+      
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
         {/* Coluna 1: Logo e Slogan */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-white">DESENROLA.AI</h3>

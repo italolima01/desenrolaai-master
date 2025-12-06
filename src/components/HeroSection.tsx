@@ -6,7 +6,14 @@ import { Link } from 'react-scroll';
 
 export default function HeroSection() {
   return (
-    <div id="hero" className="relative h-screen flex items-center justify-center text-center overflow-x-hidden bg-black">
+    <div id="hero" className="relative h-screen flex items-end justify-center text-center overflow-x-hidden pb-32">
+      {/* Dark Horizon Glow */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "radial-gradient(125% 125% at 50% 90%, #000000 50%, #0d1a36 85%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4">

@@ -28,8 +28,16 @@ export default function CtaSection() {
   };
 
   return (
-    <section id="cta" className="relative bg-black text-white py-20 text-center pb-48">
-      <div className="container mx-auto px-4">
+    <section id="cta" className="relative text-white py-20 text-center pb-48">
+      {/* Inverted Dark Horizon Glow */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "radial-gradient(125% 125% at 50% 10%, #000000 64%, #0d1a36 119%)",
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
