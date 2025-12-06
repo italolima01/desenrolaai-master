@@ -3,31 +3,27 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaRobot, FaCogs, FaLightbulb, FaAngleDoubleRight } from 'react-icons/fa'; // Removed unused imports
-import { QuoteModal } from './QuoteModal'; // Removed unused imports
-// import { ChatWidget } from './ChatWidget'; // Import for modal control logic - commented out as it's unused
-import './animated-button.css';
+import './card-animation.css';
+
 
 export default function ServicesSection() {
   const services = [
     {
       title: 'Agentes de IA Personalizados',
       subtitle: 'Automatize tarefas específicas do seu negócio.',
-      description:
-        'Projetamos e implementamos agentes autônomos que integram dados, executam fluxos e tomam decisões para acelerar rotinas e reduzir custos.',
+      description: 'Transforme processos repetitivos em automação inteligente. Nossos agentes de IA aprendem com seus dados e executam tarefas complexas 24/7, liberando sua equipe para focar no estratégico.',
       Icon: FaRobot,
     },
     {
       title: 'Softwares Sob Medida',
       subtitle: 'Desenvolvemos sistemas de ponta, otimizados para você.',
-      description:
-        'Aplicações web e serviços escaláveis, com arquitetura moderna, performance e segurança, feitos para as necessidades da sua empresa.',
+      description: 'Cada negócio é único. Criamos soluções personalizadas que se adaptam perfeitamente aos seus processos, garantindo eficiência máxima e resultados mensuráveis.',
       Icon: FaCogs,
     },
     {
       title: 'Consultoria em IA',
       subtitle: 'Orientação estratégica para implementar IA de forma eficiente.',
-      description:
-        'Do diagnóstico à implantação: avaliamos oportunidades, definimos roadmap e apoiamos seu time na adoção de IA com governança.',
+      description: 'Não sabe por onde começar com IA? Guiamos sua empresa desde a identificação de oportunidades até a implementação prática, com foco em ROI e resultados tangíveis.',
       Icon: FaLightbulb,
     },
   ];
@@ -54,30 +50,34 @@ type IconType = (props: { size?: number }) => React.ReactNode;
 
 function FlipCard({ title, subtitle, description, Icon }: { title: string; subtitle: string; description: string; Icon: IconType }) {
   const [flipped, setFlipped] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const openModal = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent card from flipping back
-    setIsModalOpen(true);
+  const handleClick = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setFlipped((v) => !v);
+      setIsAnimating(false);
+    }, 250);
   };
 
   return (
     <div
-      className="relative h-full min-h-56 md:min-h-64 [perspective:1000px]"
-      onClick={() => setFlipped((v) => !v)}
+      className="relative h-full min-h-64 cursor-pointer"
+      style={{ perspective: '1000px' }}
+      onClick={handleClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setFlipped((v) => !v)}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick()}
     >
-      <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <motion.div
-        className="group relative h-full w-full rounded-xl border border-[rgb(var(--color-secondary))]/50 bg-gray-900/50 p-8 flex shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-[rgb(var(--color-secondary))]/20 hover:border-[rgb(var(--color-secondary))] [transform-style:preserve-3d]"
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        whileHover={{ scale: flipped ? 1 : 1.05 }}
-        transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-      >
+      <div className={`group relative h-full w-full rounded-xl border border-[rgb(var(--color-secondary))]/50 bg-gray-900/50 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-[rgb(var(--color-secondary))]/20 hover:border-[rgb(var(--color-secondary))] ${isAnimating ? 'rotate-hor-center-normal' : ''}`}>
         {/* Front */}
-        <div className="absolute inset-0 p-8 flex flex-col [backface-visibility:hidden]">
+        <motion.div 
+          className="absolute inset-0 p-8 flex flex-col"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: flipped ? 0 : 1 }}
+          transition={{ duration: 0.3 }}
+          style={{ pointerEvents: flipped ? 'none' : 'auto' }}
+        >
           <div className="absolute right-4 top-4 h-8 w-8 grid place-items-center rounded-full bg-[rgb(var(--color-secondary))]/20 text-[rgb(var(--color-secondary))] transition-colors">
             <FaAngleDoubleRight size={14} />
           </div>
@@ -88,21 +88,22 @@ function FlipCard({ title, subtitle, description, Icon }: { title: string; subti
             <h3 className="text-xl font-semibold text-white">{title}</h3>
           </div>
           <p className="text-gray-400">{subtitle}</p>
-        </div>
+        </motion.div>
 
         {/* Back */}
-        <div className="absolute inset-0 p-8 flex flex-col justify-between bg-gray-900/50 rounded-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-          <p className="text-gray-300 leading-relaxed text-base">{description}</p>
-        </div>
-        <div className="mt-4 flex flex-col items-center">
-            <button onClick={openModal} className="animated-button w-full max-w-xs">
-              <span className="text">Solicitar Orçamento</span>
-            </button>
-        </div>
-        </div>
-      </motion.div>
+        <motion.div 
+          className="absolute inset-0 p-6 flex flex-col justify-center bg-gray-900/50 rounded-xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: flipped ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ pointerEvents: flipped ? 'auto' : 'none' }}
+        >
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">{title}</h3>
+            <p className="text-gray-300 leading-relaxed text-base">{description}</p>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
