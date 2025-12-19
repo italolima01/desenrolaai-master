@@ -5,6 +5,7 @@ import CasesSection from '@/components/CasesSection';
 import FaqSection from '@/components/FaqSection';
 import CtaSection from '@/components/CtaSection';
 import FeatureSection from '@/components/FeaturesSection';
+import ImpactSection from '@/components/ImpactSection';
 import InnovationSection from '@/components/InnovationSection';
 import Navbar from '@/components/Navbar';
 import ServicesSection from '@/components/ServicesSection';
@@ -18,9 +19,10 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      <FeatureSection />
+      <ImpactSection />
       <CasesSection />
       <InnovationSection />
+      <FeatureSection />
       <FaqSection />
       <CtaSection />
       <Footer />

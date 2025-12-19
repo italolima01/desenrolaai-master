@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Calendar, Bot } from 'lucide-react';
 import './animated-button.css';
 import { QuoteModal } from './QuoteModal';
@@ -10,6 +10,7 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const chatWidgetRef = useRef<HTMLDivElement>(null);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -24,6 +25,25 @@ export function ChatWidget() {
     }
   }, [isOpen]);
 
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (chatWidgetRef.current && !chatWidgetRef.current.contains(event.target as Node)) {
+        if (isOpen) {
+          setIsOpen(false);
+        }
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   const openModal = () => {
     setIsModalOpen(true);
     setIsOpen(false); 
@@ -35,7 +55,7 @@ export function ChatWidget() {
 
   return (
     <>
-      <div className="fixed bottom-4 right-4 z-50">
+      <div ref={chatWidgetRef} className="fixed bottom-4 right-4 z-50">
         <div
           className="bg-[rgb(var(--color-primary))] text-white w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-[rgb(var(--color-secondary))] transition-colors hover:scale-110 active:scale-90 transition-transform duration-200"
           onClick={toggleChat}

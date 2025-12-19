@@ -9,21 +9,21 @@ import './card-animation.css';
 export default function ServicesSection() {
   const services = [
     {
-      title: 'Agentes de IA Personalizados',
-      subtitle: 'Automatize tarefas específicas do seu negócio.',
-      description: 'Transforme processos repetitivos em automação inteligente. Nossos agentes de IA aprendem com seus dados e executam tarefas complexas 24/7, liberando sua equipe para focar no estratégico.',
+      title: 'Inteligência Tática',
+      subtitle: 'Análise inteligente de dados para decisões estratégicas precisas.',
+      description: 'Diagnósticos rápidos, análises assertivas e apoio estratégico imediato. Transformamos dados complexos em insights acionáveis que direcionam decisões de alto impacto.',
       Icon: FaRobot,
     },
     {
-      title: 'Softwares Sob Medida',
-      subtitle: 'Desenvolvemos sistemas de ponta, otimizados para você.',
-      description: 'Cada negócio é único. Criamos soluções personalizadas que se adaptam perfeitamente aos seus processos, garantindo eficiência máxima e resultados mensuráveis.',
+      title: 'Automação Estratégica',
+      subtitle: 'Processos automatizados que impulsionam eficiência operacional.',
+      description: 'Geração automática de documentos, relatórios, propostas, planos de ação e materiais profissionais completos. Velocidade sem comprometer qualidade.',
       Icon: FaCogs,
     },
     {
-      title: 'Consultoria em IA',
-      subtitle: 'Orientação estratégica para implementar IA de forma eficiente.',
-      description: 'Não sabe por onde começar com IA? Guiamos sua empresa desde a identificação de oportunidades até a implementação prática, com foco em ROI e resultados tangíveis.',
+      title: 'Assistência Operacional Contínua',
+      subtitle: 'Suporte especializado 24/7 para otimização constante.',
+      description: 'Um sistema que aprende a rotina do cliente e passa a entregar soluções personalizadas, padronizadas e consistentes, adaptando-se continuamente às suas necessidades.',
       Icon: FaLightbulb,
     },
   ];
