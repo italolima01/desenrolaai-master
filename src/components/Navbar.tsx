@@ -51,6 +51,9 @@ export default function Navbar() {
               <Link to="cases" spy={true} smooth={true} offset={-70} duration={500} className="text-white hover:text-[rgb(var(--color-primary))] transition-all duration-300 hover:scale-105 transform cursor-pointer" >
                 Cases
               </Link>
+              <Link to="faq" spy={true} smooth={true} offset={-70} duration={500} className="text-white hover:text-[rgb(var(--color-primary))] transition-all duration-300 hover:scale-105 transform">
+                FAQ
+              </Link>
             </div>
             
             {/* Contact Button */}
@@ -117,6 +120,9 @@ export default function Navbar() {
                   </Link>
                   <Link to="cases" spy={true} smooth={true} offset={-70} duration={500} onClick={() => setIsOpen(false)} className="text-white hover:text-[rgb(var(--color-secondary))] transition-all duration-300 hover:scale-105 transform">
                     Cases
+                  </Link>
+                  <Link to="faq" spy={true} smooth={true} offset={-70} duration={500} onClick={() => setIsOpen(false)} className="text-white hover:text-[rgb(var(--color-secondary))] transition-all duration-300 hover:scale-105 transform">
+                    FAQ
                   </Link>
                 </div>
                 <div className="flex justify-center py-6">
