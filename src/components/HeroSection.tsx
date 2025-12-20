@@ -40,7 +40,7 @@ export default function HeroSection() {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300"
               >
-                Soluções de IA
+                Soluções de Inteligência Artificial
               </motion.span>{" "}
               <motion.span
                 initial={{ opacity: 0 }}
