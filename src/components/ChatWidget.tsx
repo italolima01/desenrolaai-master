@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Calendar, Bot } from 'lucide-react';
+import { MessageCircle, X } from 'lucide-react';
 import './animated-button.css';
 import { QuoteModal } from './QuoteModal';
 

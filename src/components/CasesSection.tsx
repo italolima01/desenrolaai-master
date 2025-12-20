@@ -142,12 +142,20 @@ function Carousel({ cases, cardVariants }: { cases: CaseItem[]; cardVariants: Va
   function prev() {
     const numPages = visible === 1 ? cases.length : maxIndex + 1;
     const newIndex = (index - 1 + numPages) % numPages;
-    visible === 1 ? scrollToIndex(newIndex) : setIndex(newIndex);
+    if (visible === 1) {
+      scrollToIndex(newIndex);
+    } else {
+      setIndex(newIndex);
+    }
   }
   function next() {
     const numPages = visible === 1 ? cases.length : maxIndex + 1;
     const newIndex = (index + 1) % numPages;
-    visible === 1 ? scrollToIndex(newIndex) : setIndex(newIndex);
+    if (visible === 1) {
+      scrollToIndex(newIndex);
+    } else {
+      setIndex(newIndex);
+    }
   }
 
   function scrollToIndex(i: number) {

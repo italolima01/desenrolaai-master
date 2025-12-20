@@ -6,7 +6,7 @@ import { Link } from 'react-scroll';
 
 export default function HeroSection() {
   return (
-    <div id="hero" className="relative h-screen flex items-end justify-center text-center overflow-x-hidden pb-32">
+    <div id="hero" className="relative h-screen flex items-center justify-center text-center overflow-x-hidden">
       {/* Dark Horizon Glow */}
       <div
         className="absolute inset-0 z-0"
@@ -16,7 +16,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-16 sm:pt-0">
         <div className="space-y-6">
           <motion.div
             initial={{ opacity: 0 }}
