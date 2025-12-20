@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaRobot, FaCogs, FaLightbulb, FaAngleDoubleRight } from 'react-icons/fa'; // Removed unused imports
+import { FaRobot, FaCogs, FaLightbulb, FaAngleDoubleRight } from 'react-icons/fa';
 import './card-animation.css';
 
 
@@ -50,33 +49,27 @@ type IconType = (props: { size?: number }) => React.ReactNode;
 
 function FlipCard({ title, subtitle, description, Icon }: { title: string; subtitle: string; description: string; Icon: IconType }) {
   const [flipped, setFlipped] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleClick = () => {
-    setIsAnimating(true);
-    setTimeout(() => {
-      setFlipped((v) => !v);
-      setIsAnimating(false);
-    }, 250);
+    setFlipped((v) => !v);
   };
 
   return (
     <div
       className="relative h-full min-h-64 cursor-pointer"
-      style={{ perspective: '1000px' }}
       onClick={handleClick}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick()}
     >
-      <div className={`group relative h-full w-full rounded-xl border border-[rgb(var(--color-secondary))]/50 bg-gray-900/50 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-[rgb(var(--color-secondary))]/20 hover:border-[rgb(var(--color-secondary))] ${isAnimating ? 'rotate-hor-center-normal' : ''}`}>
-        {/* Front */}
-        <motion.div 
-          className="absolute inset-0 p-8 flex flex-col"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: flipped ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
-          style={{ pointerEvents: flipped ? 'none' : 'auto' }}
+      <div className="relative h-full w-full">
+        {/* Front Side */}
+        <div 
+          className={`absolute inset-0 rounded-xl border border-[rgb(var(--color-secondary))]/50 bg-gray-900/50 shadow-lg backdrop-blur-sm hover:shadow-[rgb(var(--color-secondary))]/20 hover:border-[rgb(var(--color-secondary))] p-8 flex flex-col transition-all duration-500 ${flipped ? 'opacity-0 rotate-y-180' : 'opacity-100 rotate-y-0'}`}
+          style={{
+            transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+            backfaceVisibility: 'hidden'
+          }}
         >
           <div className="absolute right-4 top-4 h-8 w-8 grid place-items-center rounded-full bg-[rgb(var(--color-secondary))]/20 text-[rgb(var(--color-secondary))] transition-colors">
             <FaAngleDoubleRight size={14} />
@@ -88,21 +81,21 @@ function FlipCard({ title, subtitle, description, Icon }: { title: string; subti
             <h3 className="text-xl font-semibold text-white">{title}</h3>
           </div>
           <p className="text-gray-400">{subtitle}</p>
-        </motion.div>
+        </div>
 
-        {/* Back */}
-        <motion.div 
-          className="absolute inset-0 p-6 flex flex-col justify-center bg-gray-900/50 rounded-xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: flipped ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          style={{ pointerEvents: flipped ? 'auto' : 'none' }}
+        {/* Back Side */}
+        <div 
+          className={`absolute inset-0 rounded-xl border border-[rgb(var(--color-secondary))]/50 bg-gray-900/50 shadow-lg backdrop-blur-sm hover:shadow-[rgb(var(--color-secondary))]/20 hover:border-[rgb(var(--color-secondary))] p-6 flex flex-col justify-center transition-all duration-500 ${flipped ? 'opacity-100 rotate-y-0' : 'opacity-0 rotate-y-180'}`}
+          style={{
+            transform: flipped ? 'rotateY(0deg)' : 'rotateY(-180deg)',
+            backfaceVisibility: 'hidden'
+          }}
         >
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">{title}</h3>
             <p className="text-gray-300 leading-relaxed text-base">{description}</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
