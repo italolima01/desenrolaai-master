@@ -42,6 +42,7 @@ export default function FeaturesSection() {
               key={idx}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="bg-gray-900/50 backdrop-blur-sm border border-[rgb(var(--color-secondary))]/50 p-8 rounded-xl shadow-lg hover:shadow-[rgb(var(--color-secondary))]/20 transition-all duration-150 flex flex-col items-center text-center hover:border-[rgb(var(--color-secondary))]"
