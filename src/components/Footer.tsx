@@ -61,7 +61,7 @@ export default function Footer() {
         <div>
           <h4 className="text-xl font-semibold text-white mb-4">Redes Sociais</h4>
           <div className="flex space-x-4">
-            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
+            <a href="https://api.whatsapp.com/send/?phone=5585998195457&text=Olá%2C%20vim%20através%20do%20site%20da%20Desenrola%2C%20podemos%20conversar%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
               <FaWhatsapp size={24} />
             </a>
             <a href="https://www.instagram.com/de_senrola_ai?igsh=MTR2aTluOWQ5NXo4YQ==" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
