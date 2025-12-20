@@ -7,11 +7,11 @@ export default function FaqSection() {
   const items = [
     {
       q: 'Como funcionam os prazos de entrega?',
-      a: 'Os prazos variam conforme escopo. Normalmente entregamos um MVP em 4-8 semanas e versões completas em 3-6 meses, dependendo da complexidade.',
+      a: 'Os prazos variam conforme escopo. Normalmente entregamos um MVP em 1-2 semanas e versões completas em 1-3 meses, dependendo da complexidade.',
     },
     {
       q: 'Quais tecnologias vocês utilizam?',
-      a: 'Trabalhamos com Node.js, TypeScript, React/Next.js, bancos relacionais e NoSQL, e modelos de ML acessíveis via APIs e infra em cloud.',
+      a: 'Trabalhamos com Node.js, TypeScript, React/Next.js, bancos relacionais e NoSQL, modelos de ML acessíveis via APIs e infra em cloud, dentre outras tecnologias.',
     },
     {
       q: 'Vocês fazem integrações com sistemas legados?',
