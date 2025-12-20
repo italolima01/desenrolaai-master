@@ -8,8 +8,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Desenrola",
-  description: "",
+  title: "Desenrola.AI - Soluções de IA sob medida",
+  description: "Desenvolvemos softwares inteligentes e agentes de IA personalizados para otimizar processos e automatizar tarefas.",
+  icons: {
+    icon: '/images/Logo_DesenrolaAi.svg',
+    shortcut: '/images/Logo_DesenrolaAi.svg',
+    apple: '/images/Logo_DesenrolaAi.svg',
+  },
 };
 
 export default function RootLayout({
