@@ -64,7 +64,7 @@ export default function Footer() {
             <a href="https://api.whatsapp.com/send/?phone=5585998195457&text=Olá%2C%20vim%20através%20do%20site%20da%20Desenrola%2C%20podemos%20conversar%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
               <FaWhatsapp size={24} />
             </a>
-            <a href="https://www.instagram.com/de_senrola_ai?igsh=MTR2aTluOWQ5NXo4YQ==" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
+            <a href="https://www.instagram.com/desenhttps://www.instagram.com/desenrola__ai/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3Drola__ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">
               <FaInstagram size={24} />
             </a>
             
@@ -81,7 +81,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center space-x-2">
               <FaPhone />
-              <a href="tel:+5511999999999" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">+55 (11) 99999-9999</a>
+              <a href="tel:+5585998195457" className="text-gray-400 hover:text-[rgb(var(--color-primary))] transition-colors">+55 (85) 9 9819-5457</a>
             </li>
           </ul>
         </div>
