@@ -233,14 +233,32 @@ function CircularChart({ percentage, color, title, description }: { percentage: 
 
 function BenefitCard({ icon, title, description, color }: { icon: string; title: string; description: string; color: string }) {
   return (
-    <div className="flex gap-4">
-      <div className={`${color} text-2xl font-bold mt-1 flex-shrink-0`}>
+    <motion.div 
+      className="flex gap-4 group cursor-pointer"
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ x: 8 }}
+    >
+      <motion.div 
+        className={`${color} text-2xl font-bold mt-1 flex-shrink-0`}
+        whileHover={{ 
+          x: 4,
+          scale: 1.1,
+          rotate: [0, -10, 10, 0]
+        }}
+        transition={{ 
+          rotate: { duration: 0.3 },
+          x: { duration: 0.2 },
+          scale: { duration: 0.2 }
+        }}
+      >
         {icon}
-      </div>
+      </motion.div>
       <div>
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+        <h3 className="text-lg font-semibold mb-2 group-hover:text-white transition-colors duration-200">{title}</h3>
+        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-200">{description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
