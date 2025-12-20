@@ -19,10 +19,10 @@ export default function ImpactSection() {
 
         {/* Gráfico 1 - Esquerda */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="flex justify-center">
+          <div className="flex justify-center order-1">
             <CircularChart percentage={75} color="from-emerald-400 to-teal-500" title="Aumento de Produtividade" description="Redução significativa no tempo gasto com tarefas repetitivas" />
           </div>
-          <div className="space-y-6">
+          <div className="space-y-6 order-2">
             <BenefitCard 
               icon="→"
               title="Processos Mais Eficientes"
@@ -40,7 +40,10 @@ export default function ImpactSection() {
 
         {/* Gráfico 2 - Direita */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="space-y-6 lg:order-1">
+          <div className="flex justify-center order-1 lg:order-2">
+            <CircularChart percentage={60} color="from-cyan-400 to-blue-500" title="Redução de Retrabalho" description="Eliminação de erros e inconsistências nos processos" />
+          </div>
+          <div className="space-y-6 order-2 lg:order-1">
             <BenefitCard 
               icon="→"
               title="Decisões Mais Assertivas"
@@ -54,17 +57,14 @@ export default function ImpactSection() {
               color="text-blue-400"
             />
           </div>
-          <div className="flex justify-center lg:order-2">
-            <CircularChart percentage={60} color="from-cyan-400 to-blue-500" title="Redução de Retrabalho" description="Eliminação de erros e inconsistências nos processos" />
-          </div>
         </div>
 
         {/* Gráfico 3 - Esquerda */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center">
+          <div className="flex justify-center order-1">
             <CircularChart percentage={50} color="from-blue-400 to-indigo-500" title="Economia de Tempo" description="Horas recuperadas para atividades estratégicas" />
           </div>
-          <div className="space-y-6">
+          <div className="space-y-6 order-2">
             <BenefitCard 
               icon="→"
               title="Gestão Profissionalizada"
